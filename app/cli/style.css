@@ -1,0 +1,31 @@
+/* Floristeria Bloom – theme */
+* { box-sizing: border-box; }
+body { font-family: 'Poppins', system-ui, Arial, sans-serif; margin: 0; background:#fff8f9; color:#333; }
+header, main { max-width: 900px; margin: 24px auto; }
+.box {
+  background:#fff; border:2px solid #f4c2c2; border-radius:16px; padding:20px;
+  box-shadow: 0 0 10px rgba(255,192,203,0.25);
+}
+h1 { margin:0 0 8px; color:#b8336a; letter-spacing: .2px; }
+.subtitle { color:#6a3d4f; margin:0 0 6px; }
+.actions { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+
+.btn {
+  display:inline-block; padding:10px 16px; border-radius:12px;
+  border:2px solid #b8336a; color:#b8336a; background:#fff; text-decoration:none;
+  transition: all .15s ease;
+}
+.btn:hover { background:#b8336a; color:#fff; }
+.btn-secondary { border-color:#d1a2a2; color:#333; }
+.btn-secondary:hover { background:#d1a2a2; color:#fff; }
+
+label { display:block; margin:8px 0 2px; font-weight:600; color:#5a2b3c; }
+input[type="text"], input[type="number"] {
+  width:100%; max-width:420px; padding:10px 12px; border:2px solid #f4c2c2; border-radius:12px;
+  outline:none;
+}
+input[type="text"]:focus, input[type="number"]:focus { border-color:#b8336a; }
+
+.note { color:#6a3d4f; margin-top:8px; }
+footer { text-align:center; color:#7b5462; padding: 12px 0 28px; }
+ul, ol { padding-left: 20px; }

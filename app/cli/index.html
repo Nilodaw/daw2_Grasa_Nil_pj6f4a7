@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Floristeria Bloom – Online Flower Orders</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="box">
+    <h1>Floristeria Bloom</h1>
+    <p class="subtitle">Simple PHP project for managing flower orders online</p>
+    <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Flower logo" width="96" height="96" />
+  </header>
+
+  <main class="box">
+    <section>
+      <h2>Project Overview</h2>
+      <p>
+        This web application lets customers place, list, and check flower orders.
+        It uses a client/server split: HTML/CSS/JS on the client and PHP (procedural) for server logic.
+      </p>
+      <ul>
+        <li>Client in <code>app/cli</code></li>
+        <li>Server logic in <code>app/srv</code> (no server-side HTML except list view)</li>
+        <li>File store: <code>onlineOrders/onlineOrders.db</code></li>
+        <li>GET for reading, POST for writing, HTTPS enabled</li>
+      </ul>
+    </section>
+
+    <nav class="actions">
+      <a class="btn" href="docs.html">Documentation</a>
+      <a class="btn btn-secondary" href="menu.html">Menu</a>
+    </nav>
+  </main>
+
+  <footer>
+    <small>DAW2 – PHP procedural • No frameworks • English UI</small>
+  </footer>
+</body>
+</html>
