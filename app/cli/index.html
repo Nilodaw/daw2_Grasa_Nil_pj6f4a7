@@ -1,20 +1,42 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Floristeria Bloom – Online Flower Orders</title><link rel="stylesheet" href="style.css">
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Floristeria Bloom – Online Flower Orders</title>
+<link rel="stylesheet" href="style.css">
 <body>
-<header class="box"><h1>Floristeria Bloom</h1>
-<p class="subtitle">Simple PHP project for managing flower orders online</p></header>
-<main class="box">
-  <h2>Project Overview</h2>
-  <ul>
-    <li>Client: <code>app/cli</code></li>
-    <li>Server: <code>app/srv</code> (logic only; HTML only in list view)</li>
-    <li>Data file: <code>onlineOrders/onlineOrders.db</code></li>
-    <li>HTTP: GET for read, POST for write • HTTPS enabled</li>
-  </ul>
-  <nav class="actions">
-    <a class="btn" href="docs.html">Documentation</a>
-    <a class="btn btn-secondary" href="menu.html">Menu</a>
-  </nav>
-</main>
-<footer><small>DAW2 • PHP procedural • English UI</small></footer>
+  <header class="box">
+    <div class="header-line">
+      <span class="logo" aria-hidden="true">🌸</span>
+      <div>
+        <h1 style="margin:0">Floristeria Bloom</h1>
+        <p class="subtitle" style="margin:2px 0 0">
+          Simple PHP project for managing flower orders online
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main class="box">
+    <h2>Project Overview</h2>
+    <p>
+      This app demonstrates a basic client/server split:
+      the client (HTML+CSS+JS) handles the interface, while the server (PHP)
+      processes the data and stores the orders in a simple text file.
+    </p>
+    <ul>
+      <li><strong>Client</strong>: <code>app/cli</code></li>
+      <li><strong>Server</strong>: <code>app/srv</code></li>
+      <li><strong>Data file</strong>: <code>onlineOrders/onlineOrders.db</code></li>
+      <li><strong>HTTP</strong>: GET for reading, POST for writing • <strong>HTTPS</strong> enabled</li>
+    </ul>
+
+    <nav class="actions">
+      <a class="btn" href="menu.html">Go to Menu</a>
+      <a class="btn btn-secondary" href="docs.html">Documentation</a>
+    </nav>
+  </main>
+
+  <footer>
+    <small>DAW2 • PHP procedural • English UI</small>
+  </footer>
+  <script src="script.js"></script>
 </body></html>

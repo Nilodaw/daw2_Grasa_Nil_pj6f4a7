@@ -1,17 +1,63 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Create Flower Order</title><link rel="stylesheet" href="style.css">
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Create Flower Order</title>
+<link rel="stylesheet" href="style.css">
 <body>
-<header class="box"><h1>Create Flower Order</h1><p class="subtitle">Fill in the order details</p></header>
+<header class="box">
+  <h1>Create Flower Order</h1>
+  <p class="subtitle">Fill in the order details</p>
+</header>
+
 <main class="box">
-  <form method="post" action="../srv/create_order.php" novalidate>
-    <label>Order code<input name="code" type="text" placeholder="F001" required></label>
-    <label>Customer name<input name="customer" type="text" placeholder="Ana López" required></label>
-    <label>Flower type<input name="product" type="text" placeholder="Red Roses" required></label>
-    <label>Quantity (bouquets)<input name="qty" type="number" min="1" step="1" required></label>
-    <label>Unit price (€)<input name="price" type="number" min="0" step="0.01" required></label>
-    <p class="note">VAT (21%) calculated on server.</p>
-    <div class="actions"><button class="btn" type="submit">Save Order</button>
-      <a class="btn btn-secondary" href="menu.html">Back to Menu</a></div>
+  <form id="orderForm" method="post" action="../srv/create_order.php" novalidate>
+    <label>Order code
+      <input name="code" type="text" placeholder="F001" required>
+    </label>
+
+    <label>Customer full name
+      <input name="customer" type="text" placeholder="Ana López" required>
+    </label>
+
+    <label>Address
+      <input name="address" type="text" placeholder="Carrer de les Flors, 12, Barcelona" required>
+    </label>
+
+    <label>Email
+      <input name="email" type="email" placeholder="ana@example.com" required>
+    </label>
+
+    <label>Phone
+      <input name="phone" type="tel" placeholder="+34 600 123 456" required>
+    </label>
+
+    <fieldset style="margin-top:12px">
+      <legend>Available products</legend>
+      <label><input type="checkbox" name="prod1" value="Roses|15"> Roses (15€)
+        <input type="number" name="qty1" min="1" step="1" placeholder="Qty" disabled>
+      </label><br>
+      <label><input type="checkbox" name="prod2" value="Tulips|10"> Tulips (10€)
+        <input type="number" name="qty2" min="1" step="1" placeholder="Qty" disabled>
+      </label><br>
+      <label><input type="checkbox" name="prod3" value="Sunflowers|12"> Sunflowers (12€)
+        <input type="number" name="qty3" min="1" step="1" placeholder="Qty" disabled>
+      </label><br>
+      <label><input type="checkbox" name="prod4" value="Lilies|18"> Lilies (18€)
+        <input type="number" name="qty4" min="1" step="1" placeholder="Qty" disabled>
+      </label>
+    </fieldset>
+
+    <p class="note">VAT (21%) calculated on the server.</p>
+
+    <div class="actions" style="margin-top:8px">
+      <button class="btn" type="submit">Save Order</button>
+      <a class="btn" href="menu.html">Back to Menu</a>
+      <a class="btn btn-secondary" href="index.html">Back to Home</a>
+    </div>
   </form>
+
+  <!-- Aquí se mostrará el resultado -->
+  <section id="result" class="box" style="display:none"></section>
 </main>
+
+<script src="script.js"></script>
 </body></html>

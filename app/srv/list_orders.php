@@ -1,44 +1,50 @@
 <?php
 declare(strict_types=1);
-const ORDERS_DB = __DIR__ . '/../../onlineOrders/onlineOrders.db';
+const ORDERS_DB = __DIR__.'/../../onlineOrders/onlineOrders.db';
 
-if ($_SERVER['REQUEST_METHOD'] !== 'GET') { http_response_code(405); exit('Method must be GET'); }
-
-$rows = [];
-if (is_file(ORDERS_DB)) {
-  foreach (file(ORDERS_DB, FILE_IGNORE_NEW_LINES|FILE_SKIP_EMPTY_LINES) as $ln) {
-    $p = explode('|',$ln);
-    if (count($p)===7) $rows[] = $p; // [code, customer, product, qty, price, vat, total]
-  }
+function parse_order_line(string $ln): ?array { // incluye parseo de items a multidimensional
+  $p=explode('|',trim($ln)); if(count($p)!==9) return null;
+  $items=[]; foreach(array_filter(explode(',',$p[5])) as $ch){ [$n,$q]=array_pad(explode('x',$ch,2),2,'0'); $items[]=['name'=>$n,'qty'=>(int)$q]; }
+  return ['code'=>$p[0],'customer'=>$p[1],'address'=>$p[2],'email'=>$p[3],'phone'=>$p[4],
+          'items'=>$items,'items_str'=>$p[5],'subtotal'=>$p[6],'vat'=>$p[7],'total'=>$p[8]];
 }
+function read_all_orders(string $db): array { // llama a parse_order_line()
+  $out=[]; if(!is_file($db)) return $out; $fp=fopen($db,'rb');
+  while(($ln=fgets($fp))!==false){ $o=parse_order_line($ln); if($o) $out[]=$o; } fclose($fp); return $out;
+}
+
+if($_SERVER['REQUEST_METHOD']!=='GET'){ http_response_code(405); exit('Method must be GET'); }
+$orders=read_all_orders(ORDERS_DB);
 ?>
 <!doctype html><html lang="en"><meta charset="utf-8"><title>All Flower Orders</title>
 <style>
- body{font-family:system-ui,Arial;background:#f6f7fb} main{max-width:1000px;margin:24px auto;background:#fff;border:1px solid #e6e8ef;border-radius:12px;padding:20px}
- table{width:100%;border-collapse:collapse} th,td{border:1px solid #e6e8ef;padding:8px 10px;text-align:left} th{background:#f0f2f8}
- a.btn{display:inline-block;margin-top:12px;padding:8px 12px;border:1px solid #7d8590;border-radius:10px;text-decoration:none;color:#111}
+ body{font-family:system-ui,Arial;background:#f6f7fb;margin:0}
+ main{max-width:1000px;margin:24px auto;background:#fff;border:1px solid #e6e8ef;border-radius:12px;padding:20px}
+ .actions{display:flex;gap:12px;margin-top:14px}
+ a.btn{display:inline-block;padding:8px 12px;border:1px solid #7d8590;border-radius:10px;text-decoration:none;color:#111}
  a.btn:hover{background:#7d8590;color:#fff}
+ .line{padding:6px 8px;border-bottom:1px dashed #e0e3ea;white-space:pre-wrap;font-family:ui-monospace,Menlo,monospace}
+ .empty{color:#666}
 </style>
 <main>
-<h1>All Flower Orders</h1>
-<?php if(!$rows): ?><p>No orders yet.</p>
-<?php else: ?>
-<table><thead><tr>
-<th>Code</th><th>Customer</th><th>Flower</th><th>Qty</th><th>Unit Price (€)</th><th>VAT 21% (€)</th><th>Total (€)</th>
-</tr></thead><tbody>
-<?php foreach($rows as $r): ?>
-<tr>
-<td><?=htmlspecialchars($r[0])?></td>
-<td><?=htmlspecialchars($r[1])?></td>
-<td><?=htmlspecialchars($r[2])?></td>
-<td><?= (int)$r[3] ?></td>
-<td><?= number_format((float)$r[4],2,'.','') ?></td>
-<td><?= number_format((float)$r[5],2,'.','') ?></td>
-<td><?= number_format((float)$r[6],2,'.','') ?></td>
-</tr>
-<?php endforeach; ?>
-</tbody></table>
-<?php endif; ?>
-<p><a class="btn" href="../cli/menu.html">Back to Menu</a></p>
+  <h1>All Flower Orders</h1>
+  <?php if(!$orders): ?><p class="empty">No orders yet.</p>
+  <?php else: foreach($orders as $o): ?>
+    <div class="line">
+      <?=htmlspecialchars($o['code'])?> :
+      <?=htmlspecialchars($o['customer'])?> :
+      <?=htmlspecialchars($o['address'])?> :
+      <?=htmlspecialchars($o['email'])?> :
+      <?=htmlspecialchars($o['phone'])?> :
+      <?=htmlspecialchars($o['items_str'])?> :
+      <?=htmlspecialchars($o['subtotal'])?> :
+      <?=htmlspecialchars($o['vat'])?> :
+      <?=htmlspecialchars($o['total'])?>
+    </div>
+  <?php endforeach; endif; ?>
+  <div class="actions">
+    <a class="btn" href="../cli/menu.html">Back to Menu</a>
+    <a class="btn" href="../cli/index.html">Back to Home</a>
+  </div>
 </main>
 </html>

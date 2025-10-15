@@ -11,3 +11,6 @@ label{display:block;margin:8px 0 2px;font-weight:600;color:#5a2b3c}
 input[type=text],input[type=number]{width:100%;max-width:420px;padding:10px 12px;border:2px solid #f4c2c2;border-radius:12px;outline:0}
 input[type=text]:focus,input[type=number]:focus{border-color:#b8336a}
 .note{color:#6a3d4f;margin-top:8px} footer{text-align:center;color:#7b5462;padding:12px 0 28px}
+.logo { font-size: 2.25rem; line-height: 1; margin-right: 10px; }
+.header-line { display:flex; align-items:center; gap:10px; }
+.header-actions { margin-top:12px; }

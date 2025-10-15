@@ -1,20 +1,38 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Documentation – Floristeria Bloom</title><link rel="stylesheet" href="style.css">
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Documentation – Floristeria Bloom</title>
+<link rel="stylesheet" href="style.css">
 <body>
-<header class="box"><h1>Documentation</h1><p class="subtitle">Scope & constraints</p></header>
-<main class="box">
-  <h2>Architecture</h2>
-  <ul>
-    <li>Client (HTML/CSS/JS) in <code>app/cli</code></li>
-    <li>Server (PHP procedural) in <code>app/srv</code></li>
-    <li>Data: <code>onlineOrders/onlineOrders.db</code> (one line per order)</li>
-    <li>HTTP: GET read • POST write • HTTPS on localhost</li>
-  </ul>
-  <h2>Features</h2>
-  <ol>
-    <li>Presentation</li><li>Create Flower Order (POST)</li>
-    <li>List All Orders (server HTML)</li><li>Get Order by Code (GET)</li>
-  </ol>
-  <p><a class="btn" href="index.html">Back to Home</a></p>
-</main>
+  <header class="box">
+    <h1>Documentation</h1>
+    <p class="subtitle">How the application works</p>
+  </header>
+
+  <main class="box">
+    <h2>Architecture</h2>
+    <ul>
+      <li><strong>Client (app/cli)</strong>: HTML, CSS and JavaScript. Handles all user interaction and sends requests to the server.</li>
+      <li><strong>Server (app/srv)</strong>: PHP scripts that validate input, calculate VAT (21%), save data to the file, and return results.</li>
+      <li><strong>Data file</strong>: <code>onlineOrders/onlineOrders.db</code>. Each line represents an order separated by <code>|</code>.</li>
+      <li><strong>Communication</strong>: the client sends <em>GET</em> or <em>POST</em> requests; the server replies with plain text or HTML tables.</li>
+    </ul>
+
+    <h2>How to use</h2>
+    <ol>
+      <li><strong>Create an order:</strong> from the menu, open “Create Flower Order”, fill in all fields, and submit.  
+      The server stores the data and redirects back to the menu.</li>
+      <li><strong>List orders:</strong> choose “List All Orders” to see every stored order in a table.</li>
+      <li><strong>Search order:</strong> in “Get Order by Code”, enter a code.  
+      The JavaScript sends it to PHP, which responds with the order’s details and total (VAT included) shown in the same page.</li>
+    </ol>
+
+    <div class="actions" style="margin-top:20px">
+      <a class="btn" href="menu.html">Go to Menu</a>
+      <a class="btn btn-secondary" href="index.html">Back to Home</a>
+    </div>
+  </main>
+
+  <footer>
+    <small>DAW2 • Floristeria Bloom • File-based storage</small>
+  </footer>
 </body></html>
