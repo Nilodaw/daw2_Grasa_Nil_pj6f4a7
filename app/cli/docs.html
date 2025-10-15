@@ -1,41 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Documentation – Floristeria Bloom</title>
-  <link rel="stylesheet" href="style.css"/>
-</head>
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Documentation – Floristeria Bloom</title><link rel="stylesheet" href="style.css">
 <body>
-  <header class="box">
-    <h1>Documentation</h1>
-    <p class="subtitle">Scope and constraints</p>
-  </header>
-
-  <main class="box">
-    <h2>Architecture</h2>
-    <ul>
-      <li><strong>Client</strong> (HTML/CSS/JS) in <code>app/cli</code></li>
-      <li><strong>Server</strong> (PHP procedural) in <code>app/srv</code></li>
-      <li><strong>Data</strong> file: <code>onlineOrders/onlineOrders.db</code> (one line per order)</li>
-      <li><strong>HTTP</strong>: GET for reading, POST for writing</li>
-      <li><strong>Security</strong>: local HTTPS (Apache SSL)</li>
-    </ul>
-
-    <h2>Features</h2>
-    <ol>
-      <li>Presentation (home + this page)</li>
-      <li>Create Flower Order (POST → save to file)</li>
-      <li>List All Orders (server generates simple HTML table)</li>
-      <li>Get Order by Code (GET)</li>
-    </ol>
-
-    <p><a class="btn" href="index.html">Back to Home</a></p>
-  </main>
-
-  <footer>
-    <small>DAW2 • Floristeria Bloom • File-based storage</small>
-  </footer>
-</body>
-</html>
-
+<header class="box"><h1>Documentation</h1><p class="subtitle">Scope & constraints</p></header>
+<main class="box">
+  <h2>Architecture</h2>
+  <ul>
+    <li>Client (HTML/CSS/JS) in <code>app/cli</code></li>
+    <li>Server (PHP procedural) in <code>app/srv</code></li>
+    <li>Data: <code>onlineOrders/onlineOrders.db</code> (one line per order)</li>
+    <li>HTTP: GET read • POST write • HTTPS on localhost</li>
+  </ul>
+  <h2>Features</h2>
+  <ol>
+    <li>Presentation</li><li>Create Flower Order (POST)</li>
+    <li>List All Orders (server HTML)</li><li>Get Order by Code (GET)</li>
+  </ol>
+  <p><a class="btn" href="index.html">Back to Home</a></p>
+</main>
+</body></html>
