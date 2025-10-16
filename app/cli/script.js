@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const res = document.getElementById('result');
 
-  // GET: buscar por código (get.html)
   const getForm = document.querySelector('form[action="../srv/get_order.php"]');
   if (getForm && res) {
     getForm.addEventListener('submit', async e => {
@@ -12,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // CREATE: habilitar qty al marcar producto + enviar por POST (create.html)
   const createForm = document.getElementById('orderForm');
   if (createForm && res) {
     createForm.querySelectorAll('fieldset input[type="checkbox"]').forEach(chk=>{
